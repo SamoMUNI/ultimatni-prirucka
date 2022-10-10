@@ -1,8 +1,9 @@
-from ultimatni_prirucka.deck import Deck, Card
+from ultimatni_prirucka.deck import Deck, Card, ToggleCard
 
 from random import shuffle
 
 from dataclasses import FrozenInstanceError
+
 import pytest
 
 def test_create_card():
@@ -38,3 +39,7 @@ def test_card_is_immutable():
     card = Card("b", "h")
     with pytest.raises(FrozenInstanceError):
         card.colour = "b2"  # TODO: improve
+
+def test_use_toggle_cards():
+    deck = Deck(ToggleCard)
+    assert not gdeck[0].is_revealed 
